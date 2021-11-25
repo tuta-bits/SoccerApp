@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SoccerApp.Views.NewTeamPage"
+             xmlns:ViewModels="clr-namespace:SoccerApp.ViewModels">
+
+
+
+
+
+    <ContentPage.BindingContext>
+        <ViewModels:MainViewModel/>
+    </ContentPage.BindingContext>
+
+
+    <Grid Padding="10">
+        <Frame CornerRadius="20"
+               HasShadow="True">
+            <StackLayout Orientation="Vertical"
+                 Spacing="18">
+
+                <Label Text="Name" />
+                <Entry Text="{Binding SelectedTeam.Name, Mode=TwoWay}"/>
+
+                <Label Text="Home" />
+                <Entry Text="{Binding SelectedTeam.Home, Mode=TwoWay}"/>
+
+                <Label Text="StadiumInfo" />
+                <Entry Text="{Binding SelectedTeam.StadiumInfo, Mode=TwoWay}"/>
+
+                <Button Text="Create Team" 
+               Command="{Binding PostCommand}"
+                BackgroundColor="Green"
+                CornerRadius="20"/>
+
+                <Button Text="Update Team Info" 
+               Command="{Binding PutCommand}"
+                BackgroundColor="Blue"
+                CornerRadius="20"/>
+
+                <Button Text="Delete Team" 
+               Command="{Binding DeleteCommand}"
+                BackgroundColor="Red"
+                CornerRadius="20"/>
+
+            </StackLayout>
+        </Frame>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SoccerApp.MainPage"
+             xmlns:ViewModels="clr-namespace:SoccerApp.ViewModels">
+
+    <ContentPage.BindingContext>
+        <ViewModels:MainViewModel />
+    </ContentPage.BindingContext>
+
+
+    <ContentPage.Resources>
+ 
+    </ContentPage.Resources>
+
+    <StackLayout Orientation="Vertical">
+
+
+        <Button Text="Add Team"
+                Clicked="Button_Clicked"
+                BackgroundColor="ForestGreen"
+                CornerRadius="20"/>
+
+        <ListView ItemsSource="{Binding TeamsList}"
+                  x:Name="Grande"
+                  HasUnevenRows="True"
+                  SeparatorVisibility="None"
+                  ItemTapped="Grande_ItemTapped"
+                  IsPullToRefreshEnabled="True"
+                  IsRefreshing="{Binding IsRefreshing}"
+                  RefreshCommand="{Binding RefreshCommand}"
+                  RefreshControlColor="Purple">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="10">
+                            <Frame CornerRadius="20"
+                                   HasShadow="True"
+                                   BackgroundColor="#f0f8ff">
+                                <StackLayout Orientation="Vertical"
+                                             Padding="12,6">
+                                    <Label Text="{Binding Id}"
+                                           TextColor="Black"/>
+                                    <Label Text="{Binding Name}"
+                                           TextColor="Black"/>
+                                    <Label Text="{Binding Home}"
+                                           TextColor="Black"/>
+                                    <Label Text="{Binding StadiumInfo}"
+                                           TextColor="Black"/>
+                                </StackLayout>
+                            </Frame>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+
+</ContentPage>
